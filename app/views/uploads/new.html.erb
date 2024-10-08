@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+  <p style="color: green;"><%= flash[:notice] %></p>
+<% elsif flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>
+
+<h1>Upload Excel File</h1>
+
+<%= form_with url: uploads_path, local: true, method: :post, multipart: true do |form| %>
+  <div class="form-group">
+    <%= form.label :file, "Select Excel File" %><br>
+    <%= form.file_field :file, required: true %>
+  </div>
+  <%= form.submit "Upload" %>
+<% end %>
